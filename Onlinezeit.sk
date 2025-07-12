@@ -1,0 +1,53 @@
+options:
+	p: &dDEINSERVER&7.de &8| &7
+	
+every 1 seconds:
+	loop all players:
+		add 1 to {sneakzzz.oz.sec.%uuid of loop-player%}
+		if {sneakzzz.oz.sec.%uuid of loop-player%} is more than 60 -1:
+			set {sneakzzz.oz.sec.%uuid of loop-player%} to 0
+			add 1 to {sneakzzz.oz.min.%uuid of loop-player%}
+			if {sneakzzz.oz.min.%uuid of loop-player%} is more than 60-1:
+				set {sneakzzz.oz.min.%uuid of loop-player%} to 0
+				add 1 to {sneakzzz.oz.std.%uuid of loop-player%}
+		if {sneakzzz.onlinezeit.toggleactionbar.%uuid of loop-player%} is not set:
+			send action bar "&8⋆ &7STD: &d%{sneakzzz.oz.std.%uuid of loop-player%}% &7MIN: &d%{sneakzzz.oz.min.%uuid of loop-player%}% &7SEC: &d%{sneakzzz.oz.sec.%uuid of loop-player%}% &8&o( &d&o/oztoggle &8&o) &8⋆ " to loop-player
+
+command /oztoggle:
+	aliases: ottoggle
+	trigger:
+		if {sneakzzz.onlinezeit.toggleactionbar.%uuid of player%} is not set:
+			send "{@p}Onlinezeit-Actionbar wurde deaktiviert."
+			set {sneakzzz.onlinezeit.toggleactionbar.%uuid of player%} to true
+		else:
+			delete {sneakzzz.onlinezeit.toggleactionbar.%uuid of player%}
+			send "{@p}Onlinezeit-Actionbar wurde aktiviert."
+
+placeholderapi placeholder with the prefix "splaytime": # %sbank_info% 
+	loop {sneakzzz.crates::*}:
+		if the identifier is "info":
+			set {_target} to player
+			set the result to "&8⋆ &7STD: &d%{sneakzzz.oz.std.%uuid of player%}% &7MIN: &d%{sneakzzz.oz.min.%uuid of player%}% &7SEC: &d%{sneakzzz.oz.sec.%uuid of player%}% &8⋆"
+
+on join:
+	if {sneakzzz.oz.sec.%uuid of player%} is not set:
+		set {sneakzzz.oz.sec.%uuid of player%} to 0
+	if {sneakzzz.oz.min.%uuid of player%} is not set:
+		set {sneakzzz.oz.min.%uuid of player%} to 0
+	if {sneakzzz.oz.std.%uuid of player%} is not set:
+		set {sneakzzz.oz.std.%uuid of player%} to 0
+		
+
+command /onlinezeit [<offline player>]:
+	aliases: /oz, /spielzeit, /ot
+	trigger:
+		if arg-1 is not set:
+			send "{@p}Deine Spielzeit: &7STD: &d%{sneakzzz.oz.std.%uuid of player%}% &7MIN: &d%{sneakzzz.oz.min.%uuid of player%}% &7SEC: &d%{sneakzzz.oz.sec.%uuid of player%}%"
+		else if player has permission "sneakzzz.onlinezeit.other":
+			if {sneakzzz.oz.sec.%uuid of arg-1%} is not set:
+				send "{@p}Der Spieler hat noch nicht gespielt."
+			else:
+				send "{@p}%arg-1%'s Spielzeit: &7STD: &d%{sneakzzz.oz.std.%uuid of arg-1%}% &7MIN: &d%{sneakzzz.oz.min.%uuid of arg-1%}% &7SEC: &d%{sneakzzz.oz.sec.%uuid of arg-1%}%"
+		else:
+			send "{@p}Deine Spielzeit: &7STD: &d%{sneakzzz.oz.std.%uuid of player%}% &7MIN: &d%{sneakzzz.oz.min.%uuid of player%}% &7SEC: &d%{sneakzzz.oz.sec.%uuid of player%}%"
+		
