@@ -51,11 +51,11 @@ Schitt 4:
 
 
 ## Screenshots
-- Bild1
-![App Screenshot]()
+- Actionbar
+![App Screenshot](https://cdn.discordapp.com/attachments/1209532996861038673/1393450221928845372/image.png?ex=68733725&is=6871e5a5&hm=70a9f168d04ac7ad457135ca268f77a132b525407040735be4c0a33fb6fd7230&)
 
-- Bild2
-![App Screenshot]()
+- Onlinezeit Command
+![App Screenshot](https://cdn.discordapp.com/attachments/1209532996861038673/1393450078605152336/image.png?ex=68733703&is=6871e583&hm=bdb18804df8e429bc4e5a6c57ea1400abde3db24c0960f0e32650d9b6ab53969&)
 
 
 ## Feedback & Support
