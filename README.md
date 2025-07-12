@@ -10,7 +10,7 @@
 ## Features
 
 - Onlinezeit in der Actionbar ( Umschaltbar: /oztoggle )
-- PlaceholderAPI unterstützung
+- PlaceholderAPI unterstützung ( %splaytime_info% )
 - Plug & Play
 
 ## Required
