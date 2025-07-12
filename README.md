@@ -21,7 +21,7 @@
 
 ## Commands & Permissions
 
-- /onlinezeit ( sneakzz.onlinezeit.other
+- /onlinezeit ( sneakzz.onlinezeit.other )
   - /oz
   - /spielzeit
   - /ot
